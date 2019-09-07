@@ -7,10 +7,10 @@ description:
   The @list-singleton@ package allows you to easily and clearly create lists
   with only one element in them, which are typically called "singleton lists"
   or simply "singletons". (Not to be confused with
-  the [@singletons@](https://hackage.haskell.org/package/singletons) package!)
+  the @[singletons](https://hackage.haskell.org/package/singletons)@ package!)
   .
   With any luck this library will be included in future versions of
-  the [@base@](https://hackage.haskell.org/package/base) package. See this
+  the @[base](https://hackage.haskell.org/package/base)@ package. See this
   mailing list thread for an extended discussion:
   <https://mail.haskell.org/pipermail/libraries/2019-August/029801.html>.
 
