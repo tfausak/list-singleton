@@ -1,0 +1,108 @@
+-- | This module is meant to augment the "Data.List" module. You may want to
+-- import both modules using the same alias. For example:
+--
+-- @
+-- import qualified "Data.List" as List
+-- import qualified "Data.List.Singleton" as List
+-- @
+module Data.List.Singleton ( singleton ) where
+
+-- | /O(1)/ Create a list with a single element in it.
+--
+-- >>> singleton "pepperoni"
+-- ["pepperoni"]
+--
+-- There are many other ways to construct lists, so why might you prefer to use
+-- 'singleton'? Here's a comparison with a few popular methods:
+--
+-- -   If you already have the element as a named value like @x@, you can wrap
+--     it up in a list literal: @[x]@. You should prefer doing that to calling
+--     'singleton'.
+--
+--     @
+--     -- Instead of this:
+--     'singleton' x
+--
+--     -- Consider this instead:
+--     [x]
+--     @
+--
+-- -   If you don't already have the element named, you can introduce a name by
+--     using a lambda: @(\\ x -> [x])@. This is perhaps the most common way to
+--     create a singleton list, but it focuses more on mechanics than intent.
+--     Also it can be get little noisy, especially with identifiers longer than
+--     single letters like @x@.
+--
+--     @
+--     -- Instead of this:
+--     g . (\\ x -> [x]) . f
+--
+--     -- Consider this instead:
+--     g . 'singleton' . f
+--     @
+--
+-- -   If you don't want to introduce a name at all, you can use an operator
+--     section: @(: [])@. This is more advanced because it requires familiarity
+--     with operator sections, list constructors, and how lists are desugared.
+--     (If you're not familiar with those concepts, the expression @(: [])@ is
+--     the same as @(\\ x -> x : [])@, which is the same as @(\\ x -> [x])@.)
+--     While those concepts are perhaps fundamental to understanding Haskell,
+--     you can get surprisingly far without them.
+--
+--     @
+--     -- Instead of this:
+--     g . (: []) . f
+--
+--     -- Consider this instead:
+--     g . 'singleton' . f
+--     @
+--
+-- -   If you want to avoid lambdas, lists, and operators completely, you can
+--     use the 'pure' method from the 'Applicative' type class. This has a lot
+--     of upsides: it's short, it's in the "Prelude", and it's easy to search
+--     for. Unfortunately it has one downside: it's polymorphic. That means it
+--     can return any type that has an 'Applicative' instance, like 'Maybe' or
+--     'IO'. By comparison 'singleton' is monomorphic and can only produce a
+--     list. Usually the fact that 'pure' is polymorphic isn't a problem, but
+--     sometimes it can produce confusing errors. Using 'singleton' can be a
+--     good way to force polymorphic code to use a list.
+--
+--     >>> import Data.Char (chr)
+--     >>> print (pure (chr 72))
+--     ...
+--     <interactive>:2:8: error:
+--         * Ambiguous type variable `f0' arising from a use of `pure'
+--           prevents the constraint `(Applicative f0)' from being solved.
+--           Probable fix: use a type annotation to specify what `f0' should be.
+--     ...
+--     >>> print (singleton (chr 72))
+--     "H"
+--
+--     @
+--     -- Instead of this:
+--     g . 'pure' . f
+--
+--     -- Consider this instead:
+--     g . 'singleton' . f
+--     @
+--
+-- The name "singleton" was chosen to mirror similar functions provided by
+-- other libraries. For example:
+--
+-- - [Data.Binary.Builder.singleton](https://hackage.haskell.org/package/binary-0.8.7.0/docs/Data-Binary-Builder.html#v:singleton)
+-- - [Data.ByteString.singleton](https://hackage.haskell.org/package/bytestring-0.10.10.0/docs/Data-ByteString.html#v:singleton)
+-- - [Data.Sequence.singleton](https://hackage.haskell.org/package/containers-0.6.2.1/docs/Data-Sequence.html#v:singleton)
+-- - [Data.Text.singleton](https://hackage.haskell.org/package/text-1.2.4.0/docs/Data-Text.html#v:singleton)
+--
+-- Note that 'singleton' is lazy in its argument.
+--
+-- >>> length (singleton undefined)
+-- 1
+--
+-- If you want to create a 'Data.List.NonEmpty.NonEmpty' list with a single
+-- element in it, consider using 'Data.List.NonEmpty.Singleton.singleton' from
+-- "Data.List.NonEmpty.Singleton".
+--
+-- @since 1.0.0.0
+singleton :: a -> [a]
+singleton a = [a]
