@@ -16,6 +16,7 @@ description:
 
 build-type: Simple
 category: Data
+extra-source-files: CHANGELOG.markdown README.markdown
 license-file: LICENSE.markdown
 license: ISC
 maintainer: Taylor Fausak
