@@ -86,6 +86,23 @@ module Data.List.Singleton ( singleton ) where
 --     g . 'singleton' . f
 --     @
 --
+-- Now that you've seen a bunch of ways to create singleton lists, you may be
+-- wondering why you'd want to do that at all. It's not often that you'll want
+-- to make a list with one element in it and call it a day. Usually it's part
+-- of a bigger computation. An illustrative example is the 'foldMap' function,
+-- which can allow you to create a large data structure (like an entire list)
+-- by stitching together a bunch of tiny lists. This can be an effective way to
+-- convert between data types. For example:
+--
+-- >>> import qualified Data.List.Singleton as List
+-- >>> import qualified Data.Set as Set
+-- >>> let aList = [2, 1, 3, 1]
+-- >>> foldMap Set.singleton aList
+-- fromList [1, 2, 3]
+-- >>> let aSet = Set.fromList [2, 3, 1]
+-- >>> foldMap List.singleton aSet
+-- [1, 2, 3]
+--
 -- The name "singleton" was chosen to mirror similar functions provided by
 -- other libraries. For example:
 --
