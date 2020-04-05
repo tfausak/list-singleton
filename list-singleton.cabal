@@ -1,7 +1,6 @@
-cabal-version: >= 1.10
-
 name: list-singleton
 version: 1.0.0.3
+
 synopsis: Easily and clearly create lists with only one element in them.
 description:
   The @list-singleton@ package allows you to easily and clearly create lists
@@ -15,8 +14,9 @@ description:
   <https://mail.haskell.org/pipermail/libraries/2019-August/029801.html>.
 
 build-type: Simple
+cabal-version: >= 1.10
 category: Data
-extra-source-files: CHANGELOG.markdown README.markdown
+extra-source-files: README.markdown
 license-file: LICENSE.markdown
 license: ISC
 maintainer: Taylor Fausak
@@ -26,6 +26,17 @@ source-repository head
   type: git
 
 library
-  build-depends: base >= 4.9 && < 4.15
+  build-depends:
+    base >= 4.9 && < 4.15
   default-language: Haskell98
-  exposed-modules: Data.List.Singleton Data.List.NonEmpty.Singleton
+  ghc-options:
+    -Weverything
+    -Wno-implicit-prelude
+    -Wno-safe
+  exposed-modules:
+    Data.List.Singleton
+    Data.List.NonEmpty.Singleton
+
+  if impl(ghc >= 8.10)
+    ghc-options:
+      -Wno-missing-safe-haskell-mode
