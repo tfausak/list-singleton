@@ -1,7 +1,7 @@
 cabal-version: 2.2
 
 name: list-singleton
-version: 1.0.0.3
+version: 1.0.0.4
 
 synopsis: Easily and clearly create lists with only one element in them.
 description:
