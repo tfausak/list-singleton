@@ -1,6 +1,6 @@
 # list-singleton
 
-[![Travis CI](https://travis-ci.org/tfausak/list-singleton.svg?branch=master)](https://travis-ci.org/tfausak/list-singleton)
+[![CI](https://github.com/tfausak/list-singleton/workflows/CI/badge.svg)](https://github.com/tfausak/list-singleton/actions/new)
 [![Hackage](https://img.shields.io/hackage/v/list-singleton)](https://hackage.haskell.org/package/list-singleton)
 [![Stackage](https://www.stackage.org/package/list-singleton/badge/nightly?label=stackage)](https://www.stackage.org/package/list-singleton)
 
