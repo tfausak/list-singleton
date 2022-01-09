@@ -5,7 +5,9 @@
 -- import qualified "Data.List" as List
 -- import qualified "Data.List.Singleton" as List
 -- @
-module Data.List.Singleton ( singleton ) where
+module Data.List.Singleton
+  ( singleton
+  ) where
 
 -- | /O(1)/ Create a list with a single element in it.
 --
