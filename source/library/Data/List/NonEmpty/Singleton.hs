@@ -5,7 +5,9 @@
 -- import qualified "Data.List.NonEmpty" as NonEmpty
 -- import qualified "Data.List.NonEmpty.Singleton" as NonEmpty
 -- @
-module Data.List.NonEmpty.Singleton ( singleton ) where
+module Data.List.NonEmpty.Singleton
+  ( singleton
+  ) where
 
 import Data.List.NonEmpty (NonEmpty((:|)))
 

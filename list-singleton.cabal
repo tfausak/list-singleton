@@ -1,7 +1,7 @@
-cabal-version: >= 1.10
+cabal-version: 2.2
 
 name: list-singleton
-version: 1.0.0.5
+version: 2.0.0.0
 
 synopsis: Easily and clearly create lists with only one element in them.
 description:
@@ -17,28 +17,41 @@ description:
 
 build-type: Simple
 category: Data
-extra-source-files: README.markdown
+extra-source-files: CHANGELOG.markdown README.markdown
 license-file: LICENSE.markdown
-license: ISC
+license: MIT
 maintainer: Taylor Fausak
 
 source-repository head
   location: https://github.com/tfausak/list-singleton
   type: git
 
-library
+flag pedantic
+  default: False
+  description: Enables @-Werror@, which turns warnings into errors.
+  manual: True
+
+common library
   build-depends:
-    base >= 4.13.0 && < 4.16
+    , base >= 4.13.0 && < 4.17
   default-language: Haskell2010
-  exposed-modules:
-    Data.List.Singleton
-    Data.List.NonEmpty.Singleton
   ghc-options:
     -Weverything
     -Wno-implicit-prelude
     -Wno-missing-exported-signatures
     -Wno-safe
 
+  if flag(pedantic)
+    ghc-options: -Werror
+
   if impl(ghc >= 8.10)
     ghc-options:
       -Wno-missing-safe-haskell-mode
+
+library
+  import: library
+
+  exposed-modules:
+    Data.List.Singleton
+    Data.List.NonEmpty.Singleton
+  hs-source-dirs: source/library
