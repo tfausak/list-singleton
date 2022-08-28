@@ -5,6 +5,11 @@ version: 2.0.0.1
 
 synopsis: Easily and clearly create lists with only one element in them.
 description:
+  Warning:
+  This package is not maintained anymore.
+  As of @base-4.15.0.0@, both [@Data.List.singleton@](https://hackage.haskell.org/package/base-4.15.0.0/docs/Data-List.html#v:singleton)
+  and [@Data.List.NonEmpty.singleton@](https://hackage.haskell.org/package/base-4.15.0.0/docs/Data-List-NonEmpty.html#v:singleton) are available.
+  .
   The @list-singleton@ package allows you to easily and clearly create lists
   with only one element in them, which are typically called "singleton lists"
   or simply "singletons". (Not to be confused with
